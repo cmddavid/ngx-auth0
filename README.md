@@ -4,7 +4,7 @@ This project is an Angular X alternative to the Auth0-lock. Aim is to keep this 
 
 ## Installation
 
-Run `npm install ngx-auth --save`
+Run `npm install ngx-auth0 --save`
 
 Add Auth0Module to your project:
 

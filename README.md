@@ -6,11 +6,9 @@ This project is an Angular X alternative to the Auth0-lock. Aim is to keep this 
 
 Run `npm install ngx-auth --save`
 
-Add `Auth0Module` to your project:
+Add Auth0Module to your project:
 
 `import { Auth0Module } from 'ngx-auth0';`
-
-Import `Auth0Module` into your module:
 
 `Auth0Module.forRoot({
     WebAuthConfig: {
@@ -21,24 +19,24 @@ Import `Auth0Module` into your module:
     connection: 'Username-Password-Authentication'
 }`
 
-Add `Auth0Service` to your component or service:
+Add Auth0Service to your component or service:
 
 `import { Auth0Service } from 'ngx-auth0';`
 
 ## Methods
 
-`login()`
+### login()
 
 Requires object containing username, password and connection. Returns observable.
 
-`loginWithCredentials()`
+### loginWithCredentials()
 
 Requires object containing username, password and connection. Returns observable.
 
-`loginByDialog()`
+### loginByDialog()
 
 Shows a login modal similar to the Auth0-lock modal, but with Material UI style. Returns observable.
 
-`logout()`
+### logout()
 
 Logs the user out and redirects the user back to your application.

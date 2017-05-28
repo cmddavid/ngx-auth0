@@ -1,28 +1,44 @@
-# NgxAuth0
+# Intro
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+This project is an Angular X alternative to the Auth0-lock. Aim is to keep this light weight by using existing popular packages such as Material2 components for the UI and the official FormsModule for validation.
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm install ngx-auth --save`
 
-## Code scaffolding
+Add `Auth0Module` to your project:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+`import { Auth0Module } from 'ngx-auth0';`
 
-## Build
+Import `Auth0Module` into your module:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+`Auth0Module.forRoot({
+    WebAuthConfig: {
+        domain: 'xxxx.xx.auth0.com',
+        clientID: 'xxxxxxxxxxxxxxxxx',
+        scope: 'openid app_metadata'
+    },
+    connection: 'Username-Password-Authentication'
+}`
 
-## Running unit tests
+Add `Auth0Service` to your component or service:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+`import { Auth0Service } from 'ngx-auth0';`
 
-## Running end-to-end tests
+## Methods
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+`login()`
 
-## Further help
+Requires object containing username, password and connection. Returns observable.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+`loginWithCredentials()`
+
+Requires object containing username, password and connection. Returns observable.
+
+`loginByDialog()`
+
+Shows a login modal similar to the Auth0-lock modal, but with Material UI style. Returns observable.
+
+`logout()`
+
+Logs the user out and redirects the user back to your application.

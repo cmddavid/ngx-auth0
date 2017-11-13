@@ -1,12 +1,12 @@
-<h1 md-dialog-title>Authentication</h1>
-<md-dialog-content>
-    <md-input-container>
-        <input mdInput [(ngModel)]="username" placeholder="Username">
-    </md-input-container>
-    <md-input-container>
-        <input mdInput [(ngModel)]="password" placeholder="Password" type="password">
-    </md-input-container>
-</md-dialog-content>
-<md-dialog-actions>
-    <button md-button (click)="dialogRef.close({username: username, password: password})">Login</button>
-</md-dialog-actions>
+<h1 mat-dialog-title>Authentication</h1>
+<mat-dialog-content>
+    <mat-input-container>
+        <input matInput [(ngModel)]="username" placeholder="Username">
+    </mat-input-container>
+    <mat-input-container>
+        <input matInput [(ngModel)]="password" placeholder="Password" type="password">
+    </mat-input-container>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="dialogRef.close({username: username, password: password})">Login</button>
+</mat-dialog-actions>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as auth0 from 'auth0-js';
 import { ConfigService } from './config.service';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../components/dialog/dialog.component';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -13,7 +13,7 @@ export class Auth0Service {
 
     auth0: any;
 
-    constructor(private config: ConfigService, public dialog: MdDialog) {
+    constructor(private config: ConfigService, public dialog: MatDialog) {
         let configObj:any = Object.assign({},this.config['WebAuthConfig']); // hack to prevent type issue, i'm not sure how to really fix this
         this.auth0 = new auth0.WebAuth(configObj);
     }

@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdDialogModule, MdButtonModule, MdInputModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -22,9 +24,9 @@ import { Configuration } from './interfaces/configuration';
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
-        MdDialogModule,
-        MdButtonModule,
-        MdInputModule
+        MatDialogModule,
+        MatButtonModule,
+        MatInputModule
     ],
     providers: [
         Auth0Service,

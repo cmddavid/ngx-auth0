@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
     selector: 'app-dialog',
@@ -10,5 +10,5 @@ import { MdDialogRef } from '@angular/material';
 export class DialogComponent {
     username: string;
     password: string;
-    constructor(public dialogRef: MdDialogRef<DialogComponent>) {}
+    constructor(public dialogRef: MatDialogRef<DialogComponent>) {}
 }

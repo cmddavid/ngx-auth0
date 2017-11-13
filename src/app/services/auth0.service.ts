@@ -54,7 +54,7 @@ export class Auth0Service {
         dialogRef.afterClosed().subscribe(result => {
             if(result != null){
                 result.connection = that.config['connection'];
-                that.login(result).subscribe(res => {
+                that.loginWithCredentials(result).subscribe(res => {
                     observer.next(res);
                 });
             }

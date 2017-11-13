@@ -31,6 +31,7 @@ export class Auth0Service {
     }
 
     login(config:any):Observable<any>{
+        config.realm = config.connection;
         return new Observable(observer => {
             this.auth0.client.login(config, (err,result) => {
                 if(err){
@@ -53,7 +54,7 @@ export class Auth0Service {
         dialogRef.afterClosed().subscribe(result => {
             if(result != null){
                 result.connection = that.config['connection'];
-                that.loginWithCredentials(result).subscribe(res => {
+                that.login(result).subscribe(res => {
                     observer.next(res);
                 });
             }

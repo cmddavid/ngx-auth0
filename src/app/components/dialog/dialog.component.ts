@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-dialog',
@@ -8,10 +9,19 @@ import { MatDialogRef } from '@angular/material/dialog';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DialogComponent {
-    username: string;
-    password: string;
     error: any;
-    constructor(public dialogRef: MatDialogRef<DialogComponent>) {}
+    loginForm: FormGroup;
+    constructor(public dialogRef: MatDialogRef<DialogComponent>, private formBuilder: FormBuilder) {
+      let formBuilderObj:any = {
+        username: [null,[Validators.required,Validators.email]],
+        password: [null,Validators.required]
+      };
+      this.loginForm = this.formBuilder.group(formBuilderObj);
+    }
+
+    post(formObj){
+      this.dialogRef.close(formObj);
+    }
 
     ngOnInit(){
       if(this.dialogRef.componentInstance.hasOwnProperty('err') === true){

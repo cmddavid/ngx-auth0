@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -10,5 +10,12 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class DialogComponent {
     username: string;
     password: string;
+    error: any;
     constructor(public dialogRef: MatDialogRef<DialogComponent>) {}
+
+    ngOnInit(){
+      if(this.dialogRef.componentInstance.hasOwnProperty('err') === true){
+        this.error = this.dialogRef.componentInstance['err'];
+      }
+    }
 }

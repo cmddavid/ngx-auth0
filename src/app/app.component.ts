@@ -10,17 +10,14 @@ export class AppComponent {
     title = 'app works!';
     selectedOption = 'string';
     constructor(private auth0Service: Auth0Service){
-        /*this.auth0Service.loginWithCredentials({
-            connection: 'x',
-            username: 'x',
-            password: 'x'
-        });*/
         this.loginByDialog();
     }
 
-    loginByDialog(){
-        this.auth0Service.loginByDialog().subscribe(x => {
-            console.log('logged in:', x);
-        });
+    loginByDialog(err = null){
+      this.auth0Service.loginByDialog(err).subscribe(x => {
+        console.log('logged in:', x);
+      }, err => {
+        this.loginByDialog(err);
+      });
     }
 }

@@ -1,12 +1,13 @@
 <h1 mat-dialog-title>Authentication</h1>
 <mat-dialog-content>
     <mat-input-container>
-        <input matInput [(ngModel)]="username" placeholder="Username">
+        <input matInput [(ngModel)]="username" placeholder="E-mail">
     </mat-input-container>
     <mat-input-container>
         <input matInput [(ngModel)]="password" placeholder="Password" type="password">
     </mat-input-container>
+    <p *ngIf="error?.description?.description">{{error.description.description}}</p>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-button (click)="dialogRef.close({username: username, password: password})">Login</button>
+    <button mat-raised-button (click)="dialogRef.close({username: username, password: password})">Login</button>
 </mat-dialog-actions>

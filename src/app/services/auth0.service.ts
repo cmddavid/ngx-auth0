@@ -23,6 +23,8 @@ export class Auth0Service {
             this.auth0.popup.loginWithCredentials(config, (err,result) => {
                 if(err){
                     console.log(err);
+                    //this.loginByDialog(err);
+                    observer.error(err);
                 } else {
                     observer.next(result);
                 }
@@ -47,15 +49,20 @@ export class Auth0Service {
         this.auth0.client.buildLogoutUrl(config);
     }
 
-    loginByDialog():Observable<any>{
+    loginByDialog(err = null):Observable<any>{
         let that = this;
         let observer = new Subject();
-        let dialogRef = that.dialog.open(DialogComponent, {disableClose: true});
+        let dialogRef:any = that.dialog.open(DialogComponent, {disableClose: true});
+        if(err != null){
+          dialogRef.componentInstance.err = err;
+        }
         dialogRef.afterClosed().subscribe(result => {
             if(result != null){
                 result.connection = that.config['connection'];
                 that.loginWithCredentials(result).subscribe(res => {
                     observer.next(res);
+                }, err => {
+                  observer.error(err);
                 });
             }
         });

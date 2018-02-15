@@ -34,8 +34,8 @@ import { Configuration } from './interfaces/configuration';
             ConfigService,
             useValue: {
                 WebAuthConfig: {
-                    domain: 'xxx.eu.auth0.com',
-                    clientID: 'xxx',
+                    domain: 'sitespirit.eu.auth0.com',
+                    clientID: 'tqNF2in8RSQkYIFuvjTxGXLZTA1dMEzT',
                     scope: 'openid app_metadata'
                 },
                 connection: 'Username-Password-Authentication'

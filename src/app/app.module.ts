@@ -35,9 +35,11 @@ import { Configuration } from './interfaces/configuration';
             ConfigService,
             useValue: {
                 WebAuthConfig: {
-                    domain: 'sitespirit.eu.auth0.com',
-                    clientID: 'tqNF2in8RSQkYIFuvjTxGXLZTA1dMEzT',
-                    scope: 'openid app_metadata'
+                  domain: 'sitespirit.eu.auth0.com',
+                  clientID: 'tqNF2in8RSQkYIFuvjTxGXLZTA1dMEzT',
+                  scope: 'openid profile email',
+                  responseType: 'token',
+                  redirectUri: location.href
                 },
                 connection: 'Username-Password-Authentication'
             }

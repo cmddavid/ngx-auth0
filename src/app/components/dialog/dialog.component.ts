@@ -13,8 +13,8 @@ export class DialogComponent {
     loginForm: FormGroup;
     constructor(public dialogRef: MatDialogRef<DialogComponent>, private formBuilder: FormBuilder) {
       let formBuilderObj:any = {
-        username: [null,[Validators.required,Validators.email]],
-        password: [null,Validators.required]
+        username: [null,[Validators.required,Validators.email,Validators.minLength(5)]],
+        password: [null,[Validators.required,Validators.minLength(4)]]
       };
       this.loginForm = this.formBuilder.group(formBuilderObj);
     }

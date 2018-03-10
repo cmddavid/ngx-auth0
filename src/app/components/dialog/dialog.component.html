@@ -10,6 +10,6 @@
     <p *ngIf="error?.description?.description">{{error.description.description}}</p>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-raised-button [disabled]="loginForm.pristine || loginForm.status === 'INVALID'" type="submit">Login</button>
+    <button mat-raised-button color="primary" [disabled]="loginForm.pristine || loginForm.status === 'INVALID'" type="submit">Login</button>
 </mat-dialog-actions>
 </form>

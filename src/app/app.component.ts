@@ -17,6 +17,7 @@ export class AppComponent {
       this.auth0Service.loginByDialog(err).subscribe(x => {
         console.log('logged in:', x);
       }, err => {
+        console.log('error logging in:',err);
         this.loginByDialog(err);
       });
     }

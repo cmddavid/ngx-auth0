@@ -11,7 +11,7 @@ import { Auth0Service } from './services/auth0.service';
 import { ConfigService } from './services/config.service';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { Configuration } from './interfaces/configuration';
-
+// @dynamic
 @NgModule({
     declarations: [
         AppComponent,

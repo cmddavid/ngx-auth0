@@ -3,8 +3,7 @@ import * as auth0 from 'auth0-js';
 import { ConfigService } from './config.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../components/dialog/dialog.component';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { Observable ,  Subject } from 'rxjs';
 
 // this service should have angular versions of all methods at https://auth0.com/docs/libraries/auth0js/v8
 

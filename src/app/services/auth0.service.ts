@@ -15,6 +15,9 @@ export class Auth0Service {
 
     constructor(private config: ConfigService, public dialog: MatDialog) {
         let configObj:any = Object.assign({},this.config['WebAuthConfig']); // hack to prevent type issue, i'm not sure how to really fix this
+        if(configObj.hasOwnProperty('redirectUri') === false || configObj.redirectUri === null){
+          configObj.redirectUri = location.href;
+        }
         this.auth0 = new auth0.WebAuth(configObj);
     }
 

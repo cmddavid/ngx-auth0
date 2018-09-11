@@ -1,4 +1,4 @@
-import { Injectable, Optional } from '@angular/core';
+import { Optional } from '@angular/core';
 import { Configuration } from '../interfaces/configuration';
 
 //@Injectable()

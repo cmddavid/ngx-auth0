@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./dialog.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DialogComponent {
+export class DialogComponent implements OnInit {
     error: any;
     loginForm: FormGroup;
     constructor(public dialogRef: MatDialogRef<DialogComponent>, private formBuilder: FormBuilder) {

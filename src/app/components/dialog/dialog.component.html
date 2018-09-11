@@ -7,9 +7,10 @@
     <mat-form-field>
         <input matInput formControlName="password" placeholder="Password" type="password" required>
     </mat-form-field>
-    <p *ngIf="error?.description?.description">{{error.description.description}}</p>
+    <p *ngIf="error?.description">{{error.description}}</p>
 </mat-dialog-content>
 <mat-dialog-actions>
+    <button mat-button color="secondary" (click)="dialogRef.close()" type="button">Cancel</button>
     <button mat-raised-button color="primary" [disabled]="loginForm.pristine || loginForm.status === 'INVALID'" type="submit">Login</button>
 </mat-dialog-actions>
 </form>

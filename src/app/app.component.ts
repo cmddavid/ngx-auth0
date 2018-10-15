@@ -18,7 +18,7 @@ export class AppComponent {
         console.log('logged in:', x);
       }, err => {
         console.log('error logging in:',err);
-        this.loginByDialog(err);
+        //this.loginByDialog(err);
       });
     }
 }

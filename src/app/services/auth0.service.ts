@@ -3,6 +3,8 @@ import * as auth0 from 'auth0-js';
 import { ConfigService } from './config.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../components/dialog/dialog.component';
+import { PasswordDialogComponent } from '../components/password-dialog/password-dialog.component';
+import { MessageDialogComponent } from '../components/message-dialog/message-dialog.component';
 import { Observable ,  Subject } from 'rxjs';
 
 // this service should have angular versions of all methods at https://auth0.com/docs/libraries/auth0js/v8
@@ -51,6 +53,21 @@ export class Auth0Service {
         this.auth0.client.buildLogoutUrl(config);
     }
 
+    changePassword(){
+      let dialogRef:any = this.dialog.open(PasswordDialogComponent, {disableClose: true});
+      dialogRef.afterClosed().subscribe(result => {
+        if(result != null){
+          this.auth0.changePassword({
+            connection: 'Username-Password-Authentication',
+            email:   result.email
+          }, ((err, resp) => {
+            let dialogRef:any = this.dialog.open(MessageDialogComponent, {disableClose: true});
+            dialogRef.componentInstance = err ? err.message : resp;
+          }));
+        }
+      });
+    }
+
     loginByDialog(err = null):Observable<any>{
         let that = this;
         let observer = new Subject();
@@ -59,13 +76,18 @@ export class Auth0Service {
           dialogRef.componentInstance.err = err;
         }
         dialogRef.afterClosed().subscribe(result => {
-            if(result != null){
+            if(result != null && result !== 'change-password'){
                 result.connection = that.config['connection'];
                 that.loginWithCredentials(result).subscribe(res => {
                     observer.next(res);
                 }, err => {
                   observer.error(err);
                 });
+            } else if(result != null && result === 'change-password'){
+              this.changePassword();
+              observer.error('Canceled login to change password');
+            } else {
+              observer.error('Canceled login');
             }
         });
         return observer;

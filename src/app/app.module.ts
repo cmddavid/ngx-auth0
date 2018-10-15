@@ -11,14 +11,20 @@ import { Auth0Service } from './services/auth0.service';
 import { ConfigService } from './services/config.service';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { Configuration } from './interfaces/configuration';
+import { PasswordDialogComponent } from './components/password-dialog/password-dialog.component';
+import { MessageDialogComponent } from './components/message-dialog/message-dialog.component';
 // @dynamic
 @NgModule({
     declarations: [
         AppComponent,
-        DialogComponent
+        DialogComponent,
+        PasswordDialogComponent,
+        MessageDialogComponent
     ],
     entryComponents: [
-        DialogComponent
+        DialogComponent,
+        PasswordDialogComponent,
+        MessageDialogComponent
     ],
     imports: [
         BrowserModule,

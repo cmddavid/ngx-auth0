@@ -1,6 +1,6 @@
 {
   "name": "ngx-auth0",
-  "version": "0.0.29",
+  "version": "0.0.31",
   "ngPackage": {
     "lib": {
       "entryFile": "index.ts"

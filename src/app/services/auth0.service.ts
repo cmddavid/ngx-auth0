@@ -6,6 +6,7 @@ import { DialogComponent } from '../components/dialog/dialog.component';
 import { PasswordDialogComponent } from '../components/password-dialog/password-dialog.component';
 import { MessageDialogComponent } from '../components/message-dialog/message-dialog.component';
 import { Observable ,  Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 // this service should have angular versions of all methods at https://auth0.com/docs/libraries/auth0js/v8
 
@@ -14,7 +15,7 @@ export class Auth0Service {
 
     auth0: any;
 
-    constructor(private config: ConfigService, public dialog: MatDialog) {
+    constructor(private config: ConfigService, public dialog: MatDialog, private http: HttpClient) {
         let configObj:any = Object.assign({},this.config['WebAuthConfig']); // hack to prevent type issue, i'm not sure how to really fix this
         if(configObj.hasOwnProperty('redirectUri') === false || configObj.redirectUri === null){
           configObj.redirectUri = location.href;
@@ -23,17 +24,21 @@ export class Auth0Service {
     }
 
     loginWithCredentials(config:any):Observable<any>{
-        return new Observable(observer => {
-            this.auth0.popup.loginWithCredentials(config, (err,result) => {
-                if(err){
-                    console.log(err);
-                    //this.loginByDialog(err);
-                    observer.error(err);
-                } else {
-                    observer.next(result);
-                }
-            });
-        });
+        if(this.config.proxyUrl != null){
+          return this.http.post(`${this.config.proxyUrl}/sign-in`,{ credentials: config });
+        } else {
+          return new Observable(observer => {
+              this.auth0.popup.loginWithCredentials(config, (err,result) => {
+                  if(err){
+                      console.log(err);
+                      //this.loginByDialog(err);
+                      observer.error(err);
+                  } else {
+                      observer.next(result);
+                  }
+              });
+          });
+        }
     }
 
     login(config:any):Observable<any>{

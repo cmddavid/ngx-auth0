@@ -8,6 +8,7 @@
         <input matInput formControlName="password" placeholder="Password" type="password" required>
     </mat-form-field>
     <p *ngIf="error?.description">{{error.description}}</p>
+    <p *ngIf="error?.error?.message?.error_description">{{error.error.message.error_description}}</p>
 </mat-dialog-content>
 <mat-dialog-actions>
     <button type="button" class="change-password" (click)="dialogRef.close('change-password')">Forgot password?</button>
